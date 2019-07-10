@@ -16,6 +16,16 @@ class Artist
     @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
 
+  def album()
+    sql = "SELECT * FROM albums WHERE artist_id = $1"
+    values = [@id]
+    album_hashes = SqlRunner.run(sql, values)
+    albums = album_hashes.map {| album | Album.new(album) }
+    return albums
+  end
+
+
+
   def self.delete_all()
     sql = "DELETE FROM artists"
     SqlRunner.run(sql)
