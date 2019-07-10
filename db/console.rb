@@ -23,6 +23,11 @@ album2 = Album.new({'title' => 'Let It Bleed',
 album1.save()
 album2.save()
 
+album2.genre = "Punk"
+album2.update()
+
+artist1.name = "The Ringo Starrs"
+artist1.update()
 
 binding.pry
 nil
